@@ -10,6 +10,8 @@
 | v2 | 물리 피처 105개(detection 수·프레임 수·프레임당 점 수, 프레임 단위 크기/속도 퍼짐/RCS, 선형 RCS 합, 중심 궤적 속도·잔차) + ExtraTrees(800) + LightGBM 확률 평균 | **0.858 ± 0.003** | **메인 채택** | v2_physfeat_et_lgb.csv = submission.csv |
 | v2b | v2 피처 + ExtraTrees + sklearn HGB (lightgbm 설치 실패 시 대체) | 0.852 ± 0.002 | 대체 버전 보관 | v2b_physfeat_et_hgb_sklearn_only.csv |
 | v3 | v2 + 진행 방향 기준 길이/폭, 속도 분포 형태(kurt/skew/gap) 15개 | ET+LGB 0.855 | 기각 (노이즈 수준, 복잡도 증가) | - |
+| v4 | v2 + 프레임 내 무리 수 16개 (scipy 단일 연결, 거리 0.5/1/2m, 위치+속도 공간, 궤적 제거 누적 점구름) | ET+LGB 0.861 ± 0.005 (반복별 +0.001/+0.004/+0.006), ET 단독 0.847로 하락 | 기각: 노이즈 수준, 목표였던 PERSONNEL↔GROUP 혼동 66→66건 그대로, 피처 생성 +9초 | - |
+| v4s | v2 + 무리 피처 4개만 (cl0.5_mean, cl1.0_mean, cl1.0_bigfrac, acc_cl1.0) | ET+LGB 0.857 ± 0.006 | 기각 (v2와 동일) | - |
 | v2-et-mf | ET max_features 0.3 / 0.5 | 0.856 / 0.857 (앙상블) | 기각 (노이즈 수준) | - |
 
 단일 모델 (v2 피처, 5×3 CV): RF 0.839, ET 0.854, HGB 0.847, LGBM 0.852.
