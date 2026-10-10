@@ -1,0 +1,5 @@
+runs/
+yolo_drone/
+yolov8s.pt
+yolov8n.pt
+yolov8s-cls.pt

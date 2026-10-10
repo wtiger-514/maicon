@@ -1,0 +1,5 @@
+path: /home/user/maicon/Problem#2/yolo_drone
+train: images/train
+val: images/val
+names:
+  0: drone
